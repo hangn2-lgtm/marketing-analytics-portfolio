@@ -84,22 +84,23 @@ Fit the logit on the randomized test sample to validate separation (deciles/gain
 
 ---
 
-## 5) Results (what changed)
+## 5) Results
 
-### Hero number #1
-**Total projected profit improvement** from targeting (vs. blanket sampling) when rolling out to 45,000 accounts.  
-> _Fill in: +$___ incremental expected profit_
+### Hero number #1 (profit at scale)
+Rolling out to 45,000 accounts:
+- **Targeted strategy:** **~$463K expected profit**
+- **Send to all:** **~$159K expected profit**
+➡️ **+$303.7K incremental expected profit** from targeting.
 
-### Hero number #2
-**ROI improvement** (Return on Marketing Expenditure) comparing targeted sampling vs. sending to everyone.  
-> _Fill in: ROI ___ vs. ___ (baseline)_
+### Hero number #2 (gains / efficiency)
+Targeting the **top 10%** of accounts captures **35% of buyers** — **3.5× better than random**.
 
 ### Practical implication
-Stumptown can scale B2B sampling with financial discipline—high-cost samples go only to high-potential accounts, improving conversion efficiency and expected profit.
+Stumptown can scale sampling with financial discipline: send expensive samples to the highest-potential accounts first, and expand only when expected profit stays positive.
 
 ---
 
-## 6) Risks & pitfalls (what could go wrong)
+## 6) Risks & pitfalls
 
 ### Bias / ethics / privacy
 Over-reliance on features like `is_cafe` or `facility_sqft` could under-target non-traditional but high-growth partners (e.g., tech offices, hotels).
