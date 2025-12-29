@@ -1,16 +1,16 @@
 # IKEA — Digital Push: Optimizing Email Frequency + Personalization (Profit-LTV Memo)
 
 **Author:** Claire Nguyen  
-**Date:** 2025-10-23 
+**Date:** 2025-10-23  
 **Decision Type:** Prescriptive / decision analytics (cadence policy + content personalization)  
 **Primary KPIs:**  
 - **Cadence policy:** 6-month discounted **profit LTV**  
 - **Personalization policy:** **Expected profit per customer / per send**  
-**Artifacts:** Memo | Notebook | Dashboard  
+**Artifacts:** Memo | Notebook  
 
 ---
 
-## Executive summary (for someone seeing this case for the first time)
+## Executive summary
 IKEA has been growing e-commerce, but many loyal customers still associate IKEA with the in-store “day-out” experience. Online sales are meaningful (about a quarter of revenue in the case) and skew toward newer, younger, or far-from-store customers—so management created a Digital Engagement Team to grow online without cannibalizing stores.
 
 Email was the main lever, but the system had two problems:
@@ -72,16 +72,16 @@ This project is successful if:
 
 ### Final workflow (what I built)
 **A) Cadence policy via discounted profit LTV**
-- I converted revenue into profit using **COGS = 65%** (so margin = 35%), because the decision should be based on profit—not revenue.
-- I used a **1% monthly discount rate** and summed expected profit over **6 months**.
-- I computed expected monthly revenue as a weighted average of subscriber and unsubscribed revenue using the monthly unsubscription rate, because unsubscribing reduces value but does not eliminate it.
-- I compared LTV across the four tested cadence policies (1–4 emails/week) and selected the highest.
+- Converted revenue into profit using **COGS = 65%** (so margin = 35%), because the decision should be based on profit—not revenue.
+- Used a **1% monthly discount rate** and summed expected profit over **6 months**.
+- Computed expected monthly revenue as a weighted average of subscriber and unsubscribed revenue using the monthly unsubscription rate, because unsubscribing reduces value but does not eliminate it.
+- Compared LTV across the four tested cadence policies (1–4 emails/week) and selected the highest.
 
 **B) Content personalization via “next best department”**
-- I treated IKEA’s random department assignments as built-in experimental variation that reveals which customers respond to which themes.
-- I trained **one logistic regression model per department** to estimate purchase probability if that department emails the customer.
-- I corrected predicted probabilities to reflect the true response rate (0.84%) rather than the oversampled 50/50 modeling rate.
-- I translated purchase likelihood into expected profit by combining predicted probability with expected margin, using **order size** as the value component and applying IKEA’s COGS assumption.
+- Treated IKEA’s random department assignments as built-in experimental variation that reveals which customers respond to which themes.
+- Trained **one logistic regression model per department** to estimate purchase probability if that department emails the customer.
+- Corrected predicted probabilities to reflect the true response rate (0.84%) rather than the oversampled 50/50 modeling rate.
+- Translated purchase likelihood into expected profit by combining predicted probability with expected margin, using **order size** as the value component and applying IKEA’s COGS assumption.
 - For each customer, I selected the department that maximizes **expected profit**, and compared that to two baselines: “send one department to everyone” and “random rotation.”
 
 ### Why this method
@@ -105,8 +105,8 @@ This approach is intentionally decision-first:
   3) **Random department assignment** (equal probability across seven messages)
 
 ### Validation approach
-- I used the provided training/validation split to avoid leakage.
-- I treated calibration as a first-class requirement because oversampling can make a model look “strong” while still producing unrealistic probabilities in production.
+- Used the provided training/validation split to avoid leakage.
+- Treated calibration as a first-class requirement because oversampling can make a model look “strong” while still producing unrealistic probabilities in production.
 
 ---
 
